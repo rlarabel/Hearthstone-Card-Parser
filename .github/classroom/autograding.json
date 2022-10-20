@@ -12,7 +12,7 @@
     },
     {
       "name": "Memcheck",
-      "setup": "make",
+      "setup": "sudo apt install -y valgrind >/dev/null && make",
       "run": "valgrind --error-exitcode=1 --leak-check=full ./parser hscards.csv 1>/dev/null",
       "input": "",
       "output": "",
@@ -22,7 +22,7 @@
     },
     {
       "name": "1a. Parse Card",
-      "setup": "cd tests && make FILE=1a_parse.c",
+      "setup": "cd tests && rm -f test && make FILE=1a_parse.c",
       "run": "./tests/test",
       "input": "",
       "output": "",
@@ -32,7 +32,7 @@
     },
     {
       "name": "1b. Parse Card",
-      "setup": "cd tests && make FILE=1b_parse.c",
+      "setup": "cd tests && rm -f test && make FILE=1b_parse.c",
       "run": "./tests/test",
       "input": "",
       "output": "",
@@ -42,7 +42,7 @@
     },
     {
       "name": "1c. Fix Card Text",
-      "setup": "cd tests && make FILE=1c_fixtext.c",
+      "setup": "cd tests && rm -f test && make FILE=1c_fixtext.c",
       "run": "./tests/test",
       "input": "",
       "output": "",
@@ -52,13 +52,23 @@
     },
     {
       "name": "1d. Deduplication",
-      "setup": "cd tests && make FILE=1d_dedupe.c",
+      "setup": "cd tests && rm -f test && make FILE=1d_dedupe.c",
       "run": "./tests/test",
       "input": "",
       "output": "",
       "comparison": "included",
       "timeout": 1,
       "points": 4
+    },
+    {
+      "name": "Full Cards Test",
+      "setup": "",
+      "run": "bash ./tests/hscards.test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 6
     }
   ]
 }
